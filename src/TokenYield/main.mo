@@ -13,7 +13,13 @@ actor TokenYield {
   };
 
   public func withdraw(amount: Nat) {
-    currentValue -= amount;
-    Debug.print(debug_show(currentValue));
+    let newCurrentValue: Int = currentValue - amount;
+
+    if (newCurrentValue < 0) {
+      Debug.print("Insufficient funds");
+    } else {
+      currentValue -= amount;
+      Debug.print(debug_show(currentValue));
+    };
   };
 }
