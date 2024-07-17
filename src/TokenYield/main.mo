@@ -5,10 +5,11 @@ import Float "mo:base/Float";
 
 actor TokenYield {
   stable var currentValue: Float = 300;
-
-  let id = 1234;
+  currentValue := 300;
+  Debug.print(debug_show(currentValue));
 
   stable var startTime = Time.now();
+  startTime := Time.now();
   Debug.print(debug_show(startTime));
 
   public func topUp(amount: Float) {
