@@ -2,8 +2,7 @@ import Debug "mo:base/Debug";
 
 
 actor TokenYield {
-  var currentValue = 300;
-  currentValue := 100;
+  stable var currentValue = 300;
 
   let id = 1234;
 
@@ -16,10 +15,14 @@ actor TokenYield {
     let newCurrentValue: Int = currentValue - amount;
 
     if (newCurrentValue < 0) {
-      Debug.print("Insufficient funds");
+      Debug.print("Insufficient funds.");
     } else {
       currentValue -= amount;
       Debug.print(debug_show(currentValue));
     };
+  };
+
+  public query func checkBalance(): async Nat {
+    return currentValue;
   };
 }
